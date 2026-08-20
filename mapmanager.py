@@ -38,6 +38,7 @@ class Mapmanager():
     self.color = self.getColor(int(position[2]))
     self.block.setColor(self.color)
     self.block.reparentTo(self.land)
+    self.block.setTag("at", str(position))
 
   def clear(self):
     self.land.removeNode()
@@ -55,4 +56,39 @@ class Mapmanager():
             block = self.addBlock((x, y, z0))
           x += 1
         y += 1
-    #return x, y
+    return x, y
+
+  def isEmpty(self, pos):
+    blocks = self.findBlocks(pos)
+    if blocks:
+      return False
+    else:
+      return True
+
+  def findBlocks(self, pos):
+    return self.land.findAllMatches("=at=" + str(pos))
+
+  def findHighestEmpty(self, pos):
+    x, y, z = pos
+    z = 1
+    while not self.isEmpty((x, y, z)):
+      z += 1
+    return (x, y, z)
+
+  def buildBlock(self, pos):
+    # we are going to place the block, taking gravity into account
+    x, y, z = pos
+    new = self.findHighestEmpty(pos)
+    if new[2] <= z + 1:
+      self.addBlock(new)
+
+  def delBlock(self, position):
+    blocks = self.findBlocks(position)
+    for block in blocks:
+      block.removeNode()
+
+  def delBlockFrom(self, position):
+    x, y, z = self.findHighestEmpty(position)
+    pos = x, y, z-1
+    for block in self.findBlocks(pos):
+      block.removeNode()
