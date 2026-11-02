@@ -1,0 +1,41 @@
+body {
+    color: #6eb8b4;
+    font-weight: bold;
+}
+
+.choose {
+  background-color: turquoise;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  color: teal;
+  font-weight: bold;
+}
+
+.questions {
+    color: teal ;
+    text-decoration: underline;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.btn {
+    color: teal ;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 0.8rem 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(74, 138, 255, 0.15);
+    border: none;
+    background-color: aquamarine;
+}
+
+.button { color: white ;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 0.8rem 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(74, 138, 255, 0.15);
+    border: none;
+    background-color: teal;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
